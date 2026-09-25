@@ -12,25 +12,33 @@ It is **not a measurement-derived model of one specific arcade cabinet**. The pr
 
 ---
 
+## Audio Comparison
+
+Listen to the difference between the unadulterated MAME output and the arcade cabinet simulation:
+
+**1. Flat / Raw MAME Audio:**
+<audio controls src="./flat-mame.mp3"></audio>
+
+**2. Arcade Cabinet Emulation (With Preset Applied):**
+<audio controls src="./arcade-boosted.mp3"></audio>
+
+---
+
 ## Preset Configuration
 
-```text
 Preamp: -2.5 dB
 Filter 1: LS f=95 Hz gain=11 dB Q=0.71
 Filter 2: PK f=315 Hz gain=-4 dB Q=1.41
 Filter 3: HS f=7000 Hz gain=2 dB Q=0.71
-```
 
 ### Equalizer APO
 
-```text
 Preamp: -2.5 dB
 Filter 1: ON LS Fc 95 Hz Gain 11 dB Q 0.71
 Filter 2: ON PK Fc 315 Hz Gain -4 dB Q 1.41
 Filter 3: ON HS Fc 7000 Hz Gain 2 dB Q 0.71
-```
 
-> **Note:** The exact syntax may vary depending on how the filters are entered through Equalizer APO or Peace. The frequency, gain, and Q values above are the important parameters.
+> Note: The exact syntax may vary depending on how the filters are entered through Equalizer APO or Peace. The frequency, gain, and Q values above are the important parameters.
 
 ---
 
@@ -107,26 +115,18 @@ The **Preamp** control can be used to compensate for these differences.
 For games that have a relatively low output level, you can raise the Preamp value.
 
 For example:
-
-```text
 Preamp: 0 dB
-```
-
 or slightly higher if necessary.
 
 ### Louder Games
 
 For games with particularly strong peaks, retaining a negative Preamp value can provide additional headroom:
-
-```text
 Preamp: -2.5 dB
-```
-
 or lower if required.
 
 Because the low shelf adds substantial gain below 95 Hz, some reduction in Preamp is useful for maintaining headroom.
 
-> **Important:** The Preamp value is primarily a gain/headroom control. It does not change the tonal shape of the preset.
+> Note: The Preamp value is primarily a gain/headroom control. It does not change the tonal shape of the preset.
 
 ---
 
@@ -135,11 +135,9 @@ Because the low shelf adds substantial gain below 95 Hz, some reduction in Pream
 ### 1. Install Equalizer APO
 
 Download Equalizer APO from the official SourceForge project:
-
 https://sourceforge.net/projects/equalizerapo/
 
 During installation:
-
 1. Select the Windows playback device you want MAME to use.
 2. Complete the installation.
 3. Reboot Windows if requested.
@@ -147,14 +145,12 @@ During installation:
 ### 2. Optional: Install Peace
 
 Peace provides a graphical interface for Equalizer APO and makes creating and adjusting presets easier.
-
 https://sourceforge.net/projects/peace-equalizer-apo-extension/
 
 ### 3. Apply the Preset
 
 Enter the following parameters into Equalizer APO or Peace:
 
-```text
 Preamp: -2.5 dB
 
 Low Shelf:
@@ -171,7 +167,6 @@ High Shelf:
 Frequency: 7000 Hz
 Gain: +2 dB
 Q: 0.71
-```
 
 Start with the default values before making personal adjustments.
 
@@ -180,7 +175,6 @@ Start with the default values before making personal adjustments.
 ## Recommended Use
 
 The preset is intended primarily for:
-
 - MAME arcade emulation
 - Desktop speakers
 - Arcade cabinet PC builds
@@ -189,8 +183,6 @@ The preset is intended primarily for:
 
 Results will depend heavily on the playback hardware.
 
-For example, applying an additional +11 dB low shelf to a system that already has a heavily boosted subwoofer may produce excessive bass. In that situation, reducing the low-shelf gain may give a more balanced result.
-
 ---
 
 ## Tuning the Preset
@@ -198,101 +190,36 @@ For example, applying an additional +11 dB low shelf to a system that already ha
 The three filters are intentionally broad, making them relatively easy to tune.
 
 ### More Bass
-
-Increase the:
-
-```text
-LS 95 Hz gain
-```
+Increase the LS 95 Hz gain.
 
 ### Less "Boxiness"
-
-Increase the depth of the:
-
-```text
-PK 315 Hz cut
-```
-
-For example:
-
-```text
--5 dB
-```
-
-instead of:
-
-```text
--4 dB
-```
+Increase the depth of the PK 315 Hz cut (e.g., -5 dB instead of -4 dB).
 
 ### More Treble Presence
-
-Increase the:
-
-```text
-HS 7000 Hz gain
-```
-
-For example:
-
-```text
-+3 dB
-```
-
-instead of:
-
-```text
-+2 dB
-```
-
-These changes are subjective and depend on the speakers or headphones being used.
+Increase the HS 7000 Hz gain (e.g., +3 dB instead of +2 dB).
 
 ---
 
 ## Future Improvements
 
-A more rigorous version of this project could be developed using measurements from real arcade machines.
-
 Potential future work includes:
-
 - Measuring frequency responses from multiple arcade cabinets.
 - Comparing different cabinet sizes and speaker configurations.
 - Recording the same game through different arcade audio systems.
-- Comparing CRT-era arcade cabinets with later LCD-based machines.
-- Creating separate presets for different cabinet types.
 - Using impulse-response measurements instead of EQ alone.
-- Providing before/after audio samples.
-- Comparing the emulator output against recordings made directly from real arcade cabinets.
-
-This would allow the preset to move from a **general tonal approximation** toward a more measurement-based arcade cabinet emulation.
 
 ---
 
 ## Scientific References & Literature
 
-The following references provide useful background on loudspeaker enclosures, baffle effects, and acoustic behavior.
-
-They should be understood as **general acoustic references**, rather than sources from which the exact EQ values in this preset were directly calculated.
-
-### Loudspeaker Enclosures & Baffle Effects
-
-- Olson, Harry F. — *Direct Radiator Loudspeaker Enclosures*. Journal of the Audio Engineering Society. Foundational work concerning loudspeaker enclosure geometry and radiation behavior.
-- Dickason, Vance — *The Loudspeaker Design Cookbook*. Audio Amateur Press. Covers loudspeaker enclosure design, baffle effects, and related loudspeaker engineering concepts.
-
-### Acoustics & Resonance
-
-- Beranek, Leo L. — *Acoustics*. McGraw-Hill. General reference covering acoustic radiation, resonance, standing waves, and enclosure-related acoustic phenomena.
+- Olson, Harry F. — Direct Radiator Loudspeaker Enclosures. Journal of the Audio Engineering Society.
+- Dickason, Vance — The Loudspeaker Design Cookbook. Audio Amateur Press.
+- Beranek, Leo L. — Acoustics. McGraw-Hill.
 
 ---
 
 ## Disclaimer
 
 This project is an **audio experimentation and emulation project**, not a scientifically validated model of arcade cabinet acoustics.
-
-The filter values were selected to produce a particular listening character and should be treated as an empirical approximation.
-
-There is no single "arcade cabinet frequency response." Real machines differed considerably in speakers, amplifiers, cabinet construction, game hardware, and installation environment.
-
-The purpose of this project is therefore simple:
 
 > **Take clean digital MAME audio and give it some of the tonal character associated with playing through a classic arcade cabinet.**
