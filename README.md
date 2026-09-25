@@ -16,11 +16,8 @@ It is **not a measurement-derived model of one specific arcade cabinet**. The pr
 
 Listen to the difference between the unadulterated MAME output and the arcade cabinet simulation:
 
-**1. Flat / Raw MAME Audio:**
-<audio controls src="./flat-mame.mp3"></audio>
-
-**2. Arcade Cabinet Emulation (With Preset Applied):**
-<audio controls src="./arcade-boosted.mp3"></audio>
+- [Listen to Flat / Raw MAME Audio](./flat-mame.mp3)
+- [Listen to Arcade Cabinet Emulation (With Preset Applied)]("./arcade-boosted.mp3")
 
 
 ---
