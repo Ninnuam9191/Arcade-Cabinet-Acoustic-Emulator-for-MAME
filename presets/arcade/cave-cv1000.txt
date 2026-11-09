@@ -1,0 +1,22 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# CAVE CV1000 / "Cave SH-3" hardware (Mushihimesama, Espgaluda II, Ibara,
+# Pink Sweets, Mushihimesama Futari, Muchi Muchi Pork!, Deathsmiles,
+# DoDonPachi DaiFukkatsu - 2004-2012). Covers the
+# original Deathsmiles (CV1000B) - NOT Deathsmiles II, which ran on
+# different "CAVE PC" hardware.
+# Sound: Yamaha YMZ770C-F, a compressed-audio codec chip (a different,
+# later generation than the 1st-gen boards' YMZ280B/OKI PCM setup).
+# Confirmed via the Arcade Otaku wiki's CV1000 hardware page. Standard
+# JAMMA wiring, no deluxe cabinet program. See HARDWARE-NOTES.md.
+# NOTE: DoDonPachi DaiOuJou Tamashii is PGM2, not CV1000. Do not use this
+# preset for that title. Ketsui and the original Espgaluda are also not CV1000.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -0.5 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 1; 50 3; 80 5.5; 120 5.5; 200 2.5; 400 -2; 700 -0.5; 1500 0; 3000 0; 6000 0; 9000 -0.5; 14000 -1
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Standard damped wood JAMMA shell, same cabinet family as cave-1st-gen.
+Filter: ON Modal Fc 420 Hz Gain 1.8 dB Q 4.0 T60 target 22 ms

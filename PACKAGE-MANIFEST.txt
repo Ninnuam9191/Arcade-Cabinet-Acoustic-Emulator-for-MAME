@@ -1,0 +1,42 @@
+PACKAGE MANIFEST
+
+Core
+- README.md
+- CHANGELOG.md
+- config.txt
+- arcade-boost.txt, arcade-boost.peace   (original, untouched)
+- arcade-boost-apo.txt   (same values, Equalizer APO syntax)
+
+User documentation
+- docs/SETUP-GUIDE.md      (illustrated beginner guide)
+- docs/images/            (guide pictures and README)
+- docs/USER-GUIDE.md
+- docs/VST-SETUP.md
+- docs/PROFILE-CATALOG.md
+
+Presets
+- presets/arcade/
+- presets/crt-tv/
+- presets/experimental-vst/   (settings cheat sheet only)
+- presets-peace/
+
+ArcadeAmp plugin (optional)
+- vst-plugin/dist/    (ArcadeAmp.dll VST2, .vst3, .clap)
+- vst-plugin/source/  (DSP header, DPF wrapper, Makefile)
+- vst-plugin/tests/   (DSP, host, Wine host and window tests + recorded outputs)
+- vst-plugin/docs/    (window screenshots)
+- vst-plugin/README.md, BUILD.md, LICENSE.txt
+- docs/VST-SETUP.md
+
+Research, history and tests
+- docs/research/
+- docs/history/PROJECT-HISTORY.md
+- docs/history/ARCADEAMP-DEVELOPMENT-LOG.md
+- docs/testing/TEST-REPORT.md
+
+Optional / future measurement work
+- impulse-responses/
+
+Original media
+- arcade-boosted.mp3
+- flat-mame.mp3 are intentionally retained in the original upstream repository and are not duplicated by this research package.

@@ -1,0 +1,15 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Sega System 16 / System 16B / System 18 (Golden Axe, Shinobi, Altered
+# Beast, Fantasy Zone)
+# Sound: Yamaha YM2151 (FM) + Sega PCM (SegaPCM). Standard JAMMA-compatible
+# uprights. See HARDWARE-NOTES.md.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -3.5 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 2; 50 4.5; 80 7.5; 120 8.5; 200 5.5; 340 -3; 600 -1; 1200 0; 3000 0.5; 6800 1.5; 10000 1; 14000 0
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Standard damped wood cabinet shell.
+Filter: ON Modal Fc 400 Hz Gain 2.0 dB Q 4.0 T60 target 24 ms

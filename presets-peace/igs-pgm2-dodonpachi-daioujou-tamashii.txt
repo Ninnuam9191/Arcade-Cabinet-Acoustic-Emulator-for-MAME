@@ -1,0 +1,20 @@
+# IGS PGM2 - DoDonPachi DaiOuJou Tamashii
+# Hardware: IGS PGM2 / Yamaha YMZ774-S.
+# MAME documents stereo YMZ774 routing for this platform.
+# Acoustic EQ below is EXPERIMENTAL; no measured PGM2 cabinet response is included.
+# See SOURCE-REGISTER-v6.3.md and PRESET-EVIDENCE-MATRIX-v6.3.md.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md.
+
+Preamp: -1.0 dB
+Filter 1: ON PK Fc 30 Hz Gain 0.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain 1.00 dB Q 1.40
+Filter 3: ON PK Fc 80 Hz Gain 2.00 dB Q 1.40
+Filter 4: ON PK Fc 120 Hz Gain 2.00 dB Q 1.40
+Filter 5: ON PK Fc 200 Hz Gain 1.00 dB Q 1.40
+Filter 6: ON PK Fc 350 Hz Gain -1.00 dB Q 1.40
+Filter 7: ON PK Fc 600 Hz Gain -0.50 dB Q 1.40
+Filter 8: ON PK Fc 7000 Hz Gain 0.00 dB Q 1.40
+Filter 9: ON PK Fc 12000 Hz Gain -0.50 dB Q 1.40
+Filter 10: ON PK Fc 16000 Hz Gain -1.00 dB Q 1.40
+Filter 11: ON PK Fc 450 Hz Gain 1.0 dB Q 3.0

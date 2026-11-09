@@ -1,0 +1,20 @@
+# Sega System 16 / System 16B / System 18 (Golden Axe, Shinobi, Altered
+# Beast, Fantasy Zone)
+# Sound: Yamaha YM2151 (FM) + Sega PCM (SegaPCM). Standard JAMMA-compatible
+# uprights. See HARDWARE-NOTES.md.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -3.5 dB
+Filter 1: ON PK Fc 30 Hz Gain 2.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain 4.50 dB Q 1.40
+Filter 3: ON PK Fc 80 Hz Gain 7.50 dB Q 1.40
+Filter 4: ON PK Fc 120 Hz Gain 8.50 dB Q 1.40
+Filter 5: ON PK Fc 200 Hz Gain 5.50 dB Q 1.40
+Filter 6: ON PK Fc 340 Hz Gain -3.00 dB Q 1.40
+Filter 7: ON PK Fc 600 Hz Gain -1.00 dB Q 1.40
+Filter 8: ON PK Fc 3000 Hz Gain 0.50 dB Q 1.40
+Filter 9: ON PK Fc 6800 Hz Gain 1.50 dB Q 1.40
+Filter 10: ON PK Fc 10000 Hz Gain 1.00 dB Q 1.40
+Filter 11: ON PK Fc 400 Hz Gain 2.0 dB Q 4.0

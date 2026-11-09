@@ -1,0 +1,23 @@
+# Neo Geo MVS - Peace approximation
+# Stereo/mono cabinet wiring is installation-dependent. This file contains
+# the frequency-domain approximation only; see presets/arcade/neogeo-mvs.txt.
+# See HARDWARE-NOTES.md and MVS-MODEL-STATUS.md for evidence status.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -1.0 dB
+Filter 1: ON PK Fc 30 Hz Gain -6.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain -4.00 dB Q 1.40
+Filter 3: ON PK Fc 120 Hz Gain 4.00 dB Q 1.40
+Filter 4: ON PK Fc 170 Hz Gain 6.00 dB Q 1.40
+Filter 5: ON PK Fc 300 Hz Gain 3.00 dB Q 1.40
+Filter 6: ON PK Fc 650 Hz Gain -5.00 dB Q 1.40
+Filter 7: ON PK Fc 1200 Hz Gain -2.00 dB Q 1.40
+Filter 8: ON PK Fc 3000 Hz Gain 0.50 dB Q 1.40
+Filter 9: ON PK Fc 5000 Hz Gain 1.00 dB Q 1.40
+Filter 10: ON PK Fc 10000 Hz Gain -4.00 dB Q 1.40
+Filter 11: ON PK Fc 700 Hz Gain 3.0 dB Q 6.0
+
+# NOT included above: mono fold-down and HP/LP band-limits are installation/model
+# options and must be configured separately when desired. See presets-peace/README.md.

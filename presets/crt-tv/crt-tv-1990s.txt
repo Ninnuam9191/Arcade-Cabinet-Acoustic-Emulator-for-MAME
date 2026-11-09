@@ -1,0 +1,24 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# CRT TV, Japan, 1990s (Super Famicom/PlayStation era)
+# By this point integrated stereo (decoder + two speakers in one set) was
+# standard equipment, over a decade after Japan's EIAJ MTS stereo standard
+# went live (see crt-tv-1970s.txt for that timeline). Documentation for a
+# single specific mainstream Japanese-domestic model from this exact
+# decade with published speaker specs was not found in this research
+# pass - this preset is built from the same general TV-speaker frequency-
+# response basis (weak <1kHz, weak >5kHz, cited in CRT-TV-NOTES.md) scaled
+# to a less severe, "improved electronics" version, rather than one named
+# model's measurements. Flagged as the weakest-sourced of the four eras.
+# HONEST LIMIT: same as crt-tv-1970s.txt - see docs/research/VST.md.
+
+Preamp: -0.5 dB
+
+# Small-speaker bandwidth limiting
+Filter: ON HP Fc 60 Hz Q 0.71
+Filter: ON LP Fc 12000 Hz Q 0.71
+
+# Overall TV-speaker tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 60 -6; 100 -3; 200 -1; 400 0.5; 700 1.5; 1000 2; 1500 2; 2000 1.5; 3000 1; 4000 0; 6000 -2; 9000 -6; 12000 -10
+
+# TV cabinet panel resonance with an actual decay time (T60): Molded-plastic TV cabinet, shorter/more damped ring than wood.
+Filter: ON Modal Fc 300 Hz Gain 1.3 dB Q 3.0 T60 target 12 ms

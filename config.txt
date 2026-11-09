@@ -1,0 +1,32 @@
+# Arcade Cabinet Acoustic Emulator for MAME
+# Equalizer APO main selector
+#
+# Enable ONE profile at a time.
+# The Configuration Editor can be used to inspect/edit these Include entries.
+# Keep all other profile lines commented out.
+#
+# Original broad approximation:
+#Include: arcade-boost-apo.txt
+#
+# Arcade hardware:
+#Include: presets/arcade/neogeo-mvs.txt
+#Include: presets/arcade/neogeo-mvs-mono.txt
+#Include: presets/arcade/cps1.txt
+#Include: presets/arcade/cps2.txt
+#Include: presets/arcade/cps3.txt
+#Include: presets/arcade/segasystem16.txt
+#Include: presets/arcade/segamodel2-deluxe.txt
+#Include: presets/arcade/konami-k053260.txt
+#Include: presets/arcade/midway-dcs.txt
+#Include: presets/arcade/atari-jsa.txt
+#Include: presets/arcade/cave-1st-gen.txt
+#Include: presets/arcade/cave-cv1000.txt
+#Include: presets/arcade/toaplan2-raizing.txt
+#Include: presets/arcade/videosystem-ym2610.txt
+#Include: presets/arcade/igs-pgm2-dodonpachi-daioujou-tamashii.txt
+#
+# CRT television / home-console playback:
+#Include: presets/crt-tv/crt-tv-1970s.txt
+#Include: presets/crt-tv/crt-tv-1980s.txt
+#Include: presets/crt-tv/crt-tv-1990s.txt
+#Include: presets/crt-tv/crt-tv-2000s.txt

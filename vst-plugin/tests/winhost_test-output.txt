@@ -1,0 +1,15 @@
+magic 56737450 params 9 flags 11
+effect name 'ArcadeAmp'
+vendor 'Arcade Cabinet Acoustic Emulato'
+product 'ArcadeAmp'
+vst version 2400, category 1, hasEditor flag 1
+[0] 'Preset' label '' disp 'Custom' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[1] 'Drive' label '%' disp '10.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[2] 'Warmth' label '%' disp '0.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[3] 'Sag' label '%' disp '0.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[4] 'Hum' label '%' disp '0.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[5] 'Hiss' label '%' disp '0.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[6] 'Hiss Tone' label '' disp '50.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[7] 'Whine' label '%' disp '0.000000' automatable=1 props=1 flags=0 intmin=0 intmax=0
+[8] 'Mains 50Hz' label '' disp '60 Hz' automatable=1 props=1 flags=1 intmin=0 intmax=0
+closed ok

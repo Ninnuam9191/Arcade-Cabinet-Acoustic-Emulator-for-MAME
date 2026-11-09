@@ -1,0 +1,22 @@
+# Konami K053260-era hardware (Sunset Riders, TMNT: Turtles in Time,
+# Asterix, Vendetta, The Simpsons)
+# Sound: Yamaha YM2151 (FM) + Konami K053260 (4-voice PCM/ADPCM).
+# Output routing is board/game dependent: some documented boards are stereo,
+# while others are mono. Standard JAMMA family; see HARDWARE-NOTES.md.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -3.0 dB
+Filter 1: ON PK Fc 30 Hz Gain 2.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain 4.00 dB Q 1.40
+Filter 3: ON PK Fc 80 Hz Gain 7.00 dB Q 1.40
+Filter 4: ON PK Fc 120 Hz Gain 8.00 dB Q 1.40
+Filter 5: ON PK Fc 200 Hz Gain 5.50 dB Q 1.40
+Filter 6: ON PK Fc 380 Hz Gain -2.00 dB Q 1.40
+Filter 7: ON PK Fc 650 Hz Gain -0.50 dB Q 1.40
+Filter 8: ON PK Fc 1200 Hz Gain 0.50 dB Q 1.40
+Filter 9: ON PK Fc 3000 Hz Gain 1.00 dB Q 1.40
+Filter 10: ON PK Fc 7500 Hz Gain 1.50 dB Q 1.40
+Filter 11: ON PK Fc 11000 Hz Gain 1.00 dB Q 1.40
+Filter 12: ON PK Fc 410 Hz Gain 2.0 dB Q 4.0

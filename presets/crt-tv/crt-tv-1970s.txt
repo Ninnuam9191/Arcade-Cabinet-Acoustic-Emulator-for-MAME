@@ -1,0 +1,30 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# CRT TV, Japan, pre-1978 (e.g. early home Pong-clone/Block Kuzushi-era
+# consoles, connected via RF to a home television)
+# Reference model: Sony Trinitron KV-1330UB (1972) / KV-1340E (1975) -
+# documented via radiomuseum.org (citing Sony's own 1978 catalog and a
+# 1975 Funk-Technik trade magazine): wooden cabinet, permanent-magnet
+# dynamic (moving-coil) loudspeaker, KV-1340E specifically documented at
+# an 8 x 12 cm oval speaker.
+# Mono confirmed: Japan's own stereo TV audio standard (EIAJ MTS) did not
+# exist yet - NHK's first tentative stereo broadcasts began October 1978,
+# standardized by the EIAJ in January 1979 (Wikipedia's "EIAJ MTS"
+# article, citing Numaguchi, IEEE Transactions on Broadcasting, 1979).
+# Before that date, Japanese TV audio was strictly mono, same as the
+# contemporary US situation but on a different (earlier) timeline.
+# HONEST LIMIT: real amplifier distortion/noise-floor character of this
+# era can't be reproduced by a linear EQ chain - see docs/research/VST.md.
+
+Preamp: -0.5 dB
+
+# Mono fold-down: TV audio in this era was effectively mono
+Copy: L=0.5*L+0.5*R R=0.5*L+0.5*R
+
+# Narrow TV audio-strip passband, expressed as a single band-pass filter
+Filter: ON BP Fc 1300 Hz Q 0.40
+
+# Overall TV-speaker tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 100 -10; 200 -6; 400 -2; 700 1; 1000 2; 1500 3; 2000 3; 3000 2; 4000 0; 5000 -4; 7000 -10; 10000 -16
+
+# TV cabinet panel resonance with an actual decay time (T60): Wood cabinet, Sony KV-1330UB/KV-1340E-type construction.
+Filter: ON Modal Fc 350 Hz Gain 2.5 dB Q 3.0 T60 target 20 ms

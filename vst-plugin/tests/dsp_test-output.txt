@@ -1,0 +1,99 @@
+== 1. Exact bypass when everything is 0 ==
+  PASS  output identical to input (max difference 0)
+  PASS  silence in -> silence out
+
+== 2. Level neutrality (the old 'volume jump'): Drive, Warmth, Sag combined, MAME-realistic levels ==
+      (v0.1: +2.2 dB at Drive 0, +5.5 dB at 12 %, +8.1 dB at 25 %)
+  PASS  tone peak 0.30  Drive   5 Warmth   0 Sag   0: RMS change  -0.05 dB, peak ratio 0.993
+  PASS  tone peak 0.30  Drive  12 Warmth   0 Sag   0: RMS change  -0.27 dB, peak ratio 0.959
+  PASS  tone peak 0.30  Drive  25 Warmth   0 Sag   0: RMS change  -1.09 dB, peak ratio 0.847
+  PASS  tone peak 0.30  Drive 100 Warmth   0 Sag   0: RMS change  -7.64 dB, peak ratio 0.332
+  PASS  tone peak 0.30  Drive  12 Warmth  15 Sag  10: RMS change  -0.70 dB, peak ratio 0.918
+  PASS  tone peak 0.30  Drive  25 Warmth  25 Sag  20: RMS change  -1.81 dB, peak ratio 0.806
+  PASS  tone peak 0.30  Drive  25 Warmth 100 Sag 100: RMS change  -4.44 dB, peak ratio 0.619
+  PASS  tone peak 0.30  Drive 100 Warmth 100 Sag 100: RMS change  -7.10 dB, peak ratio 0.499
+  PASS  tone peak 0.01  Drive   5 Warmth   0 Sag   0: RMS change  -0.00 dB, peak ratio 1.000
+  PASS  tone peak 0.01  Drive  12 Warmth   0 Sag   0: RMS change  -0.00 dB, peak ratio 1.000
+  PASS  tone peak 0.01  Drive  25 Warmth   0 Sag   0: RMS change  -0.00 dB, peak ratio 1.000
+  PASS  tone peak 0.01  Drive 100 Warmth   0 Sag   0: RMS change  -0.02 dB, peak ratio 0.997
+  PASS  tone peak 0.01  Drive  12 Warmth  15 Sag  10: RMS change  -0.01 dB, peak ratio 0.998
+  PASS  tone peak 0.01  Drive  25 Warmth  25 Sag  20: RMS change  -0.03 dB, peak ratio 0.997
+  PASS  tone peak 0.01  Drive  25 Warmth 100 Sag 100: RMS change  -0.15 dB, peak ratio 0.982
+  PASS  tone peak 0.01  Drive 100 Warmth 100 Sag 100: RMS change  -0.19 dB, peak ratio 0.980
+
+== 3. Strictly never louder per sample when Warmth = 0 and DC-block inactive (hostile +-4.0 input) ==
+  PASS  Drive 100 + Sag 100: |out| <= |in| on every sample
+  PASS  no NaN/Inf
+  PASS  everything at 100 on hostile input: finite, peak 0.63
+
+== 4. Small-signal gain 0 dB (-60 dBFS tone) ==
+  PASS  Drive 100 Warmth 0 Sag 0: gain -0.0002 dB
+  PASS  Drive 25 Warmth 100 Sag 0: gain +0.0027 dB
+  PASS  Drive 25 Warmth 25 Sag 100: gain -0.0129 dB
+
+== 5. Warmth makes even harmonics; DC is removed; Warmth 0 makes none ==
+  PASS  Warmth   0: 2nd harmonic -296.9 dB re fundamental (none), DC -0.00000
+  PASS  Warmth  50: 2nd harmonic -16.8 dB, 3rd -17.2 dB re fundamental, DC -0.00000
+  PASS  Warmth 100: 2nd harmonic -11.8 dB, 3rd -22.2 dB re fundamental, DC -0.00000
+
+== 6. Sag: level dependent, never louder, recovers ==
+  PASS  Sag 50: peak 0.05 -> -0.38 dB, peak 0.6 -> -3.75 dB (loud loses more, neither louder)
+  PASS  after a 0.7-peak burst the 0.05 tone is -6.16 dB at +50 ms, back to -0.75 dB later (its own steady state: -0.75 dB)
+
+== 7. Hum / Hiss levels, stereo identity, DC ==
+  PASS  Hum    5.0%: L  -52.5 R  -52.5 dBFS (target -52.5), L==R, DC +0.00000
+  PASS  Hum   25.0%: L  -46.5 R  -46.5 dBFS (target -46.5), L==R, DC +0.00000
+  PASS  Hum   50.0%: L  -39.0 R  -39.0 dBFS (target -39.0), L==R, DC +0.00000
+  PASS  Hum  100.0%: L  -24.0 R  -24.0 dBFS (target -24.0), L==R, DC +0.00000
+  PASS  Hiss   5.0%: L  -52.5 R  -52.5 dBFS (target -52.5), L==R, DC +0.00004
+  PASS  Hiss  25.0%: L  -46.5 R  -46.5 dBFS (target -46.5), L==R, DC +0.00008
+  PASS  Hiss  50.0%: L  -39.0 R  -39.0 dBFS (target -39.0), L==R, DC +0.00019
+  PASS  Hiss 100.0%: L  -24.0 R  -24.0 dBFS (target -24.0), L==R, DC +0.00104
+
+== 8. Hiss Tone: same loudness, different colour ==
+  PASS  overall level at tone 0/50/100: -38.9 / -39.0 / -39.0 dBFS
+  PASS  tone 0 -> 100: energy above 6 kHz rises 7.9 dB, below 1 kHz falls 9.3 dB
+
+== 9. Whine: frequency, level, silent on low sample rates ==
+  PASS   44100 Hz: 15734 Hz bin 0.0447 vs +-400 Hz 0.000000/0.000000, level -30.0 dBFS (target -30.0)
+  PASS   48000 Hz: 15734 Hz bin 0.0447 vs +-400 Hz 0.000000/0.000000, level -30.0 dBFS (target -30.0)
+  PASS   96000 Hz: 15734 Hz bin 0.0447 vs +-400 Hz 0.000000/0.000000, level -30.0 dBFS (target -30.0)
+  PASS  32 kHz sample rate (Nyquist 16 kHz): whine stays silent instead of aliasing
+
+== 10. Hum spectrum: 2nd harmonic dominant, 60 and 50 Hz, other rates ==
+  PASS  60 Hz mains: 1st 0.0216 2nd 0.0720 3rd 0.0144 4th 0.0360 -> 2nd dominates, energy on harmonics
+  PASS  50 Hz mains: 1st 0.0216 2nd 0.0720 3rd 0.0144 4th 0.0360 -> 2nd dominates, energy on harmonics
+  PASS   44100 Hz: 120 Hz bin 0.0720, neighbours low
+  PASS   96000 Hz: 120 Hz bin 0.0720, neighbours low
+
+== 11. What reaches the speaker: Hum 25 after the MVS preset's HP 85 Hz + LP 7 kHz ==
+  PASS  Hum 25: -46.5 dBFS before, -47.4 dBFS after the MVS filters (v0.1 sine hum lost 7-10 dB here)
+
+== 12. Presets ==
+  PASS  Custom passes the sliders through untouched
+  INFO  Light     Drive  5 Warmth  0 Sag  0 Hum  0 Hiss  0 Tone 50 Whine  0
+  PASS  Light keeps the user's Mains setting
+  PASS  Light: processing changes a 0.3-peak tone by -0.05 dB
+  INFO  Medium    Drive 12 Warmth 15 Sag 10 Hum 15 Hiss 10 Tone 40 Whine  0
+  PASS  Medium keeps the user's Mains setting
+  PASS  Medium: processing changes a 0.3-peak tone by -0.70 dB
+  INFO  Heavy     Drive 25 Warmth 25 Sag 20 Hum 25 Hiss 20 Tone 35 Whine  0
+  PASS  Heavy keeps the user's Mains setting
+  PASS  Heavy: processing changes a 0.3-peak tone by -1.81 dB
+  INFO  TV early  Drive 25 Warmth 25 Sag 20 Hum 25 Hiss 25 Tone 30 Whine 25
+  PASS  TV early keeps the user's Mains setting
+  PASS  TV early: processing changes a 0.3-peak tone by -1.81 dB
+  INFO  TV late   Drive 12 Warmth 15 Sag 10 Hum 12 Hiss 10 Tone 45 Whine 12
+  PASS  TV late keeps the user's Mains setting
+  PASS  TV late: processing changes a 0.3-peak tone by -0.70 dB
+
+== 13. Runtime changes: smooth, finite, mains switch on the same instance ==
+  PASS  no NaN/Inf after slamming every control
+  PASS  no giant discontinuity (max sample-to-sample jump 0.289)
+  PASS  60 Hz mains: 120 Hz buzz, no 100 Hz
+  PASS  flipped to 50 Hz on the same instance: 100 Hz buzz, no 120 Hz
+
+== 14. In-place processing equals out-of-place ==
+  PASS  identical (max difference 0)
+
+ALL TESTS PASSED (0 failures)

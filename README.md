@@ -1,226 +1,117 @@
-# Arcade-Cabinet-Acoustic-Emulator-for-MAME
+# Arcade Cabinet Acoustic Emulator for MAME
 
-A simple Equalizer APO preset designed to approximate the tonal character of a classic arcade cabinet when playing MAME on modern PC audio hardware.
+A researched Equalizer APO project for approximating the acoustic character of arcade cabinets and CRT televisions when running MAME or other retro software on modern audio hardware.
 
-## TL;DR
+The project keeps the original **Arcade Boost** preset intact while adding hardware-oriented profiles, CRT-TV profiles, Equalizer APO signal-processing features, optional nonlinear VST processing, and a documented measurement/IR path.
 
-MAME produces digital audio without reproducing the acoustic coloration introduced by a physical arcade cabinet, its speakers, amplifier, cabinet construction, and listening environment.
+## What this project models
 
-This project uses a small number of EQ filters to **approximate some of that coloration**: stronger low-frequency weight, reduced lower-midrange "boxiness", and a modest amount of high-frequency presence.
+A real cabinet is a chain, not just an EQ curve:
 
-It is **not a measurement-derived model of one specific arcade cabinet**. The preset is an intentionally broad approximation of the kind of tonal character associated with many arcade machines from the 1990s and 2000s.
+**game/audio hardware → DAC/mixer → amplifier → speaker → enclosure/mounting → listener**
 
----
+Equalizer APO can reproduce much of the **linear** part of that chain: gain, filtering, channel routing, frequency shaping, delay, resonance-style filters, and convolution when a genuine impulse response is available. It cannot by itself reproduce nonlinear amplifier behavior such as harmonic saturation or clipping.
 
-## Audio Comparison
+That is why the project has two layers:
 
-Listen to the difference between the unadulterated MAME output and the arcade cabinet simulation:
+1. **Core profiles** — Equalizer APO only. These are the reproducible, evidence-labelled profiles.
+2. **Optional VST layer** — a separate experimental stage for nonlinear coloration. It is never silently baked into the core presets.
 
-**1. Flat / Raw MAME Audio:**
-https://github.com/Ninnuam9191/Arcade-Cabinet-Acoustic-Emulator-for-MAME/raw/main/flat-mame.mp3
+## Quick start
 
-**2. Arcade Cabinet Emulation (With Preset Applied):**
-https://github.com/Ninnuam9191/Arcade-Cabinet-Acoustic-Emulator-for-MAME/raw/main/arcade-boosted.mp3
+**New to this?** Read the illustrated [`docs/SETUP-GUIDE.md`](docs/SETUP-GUIDE.md). It covers everything below in more detail.
 
+1. Install Equalizer APO and select the Windows playback device used by MAME in the Configurator.
+2. Copy this repository's `presets/` directory into the Equalizer APO `config` directory.
+3. Copy the repository `config.txt` into that configuration directory, after backing up your existing configuration.
+4. Open the Equalizer APO Configuration Editor.
+5. Enable **one** `Include:` line for the profile you want.
+6. Save and test with MAME.
 
----
+Equalizer APO's configuration system supports `Include:` files, `Copy:` channel routing, `GraphicEQ:`, `Modal` filters, and `Convolution:`. The official configuration reference documents these commands and their processing behaviour.
 
-## Preset Configuration
+## Profile families
 
-Preamp: -2.5 dB
-Filter 1: LS f=95 Hz gain=11 dB Q=0.71
-Filter 2: PK f=315 Hz gain=-4 dB Q=1.41
-Filter 3: HS f=7000 Hz gain=2 dB Q=0.71
+### Arcade
 
-### Equalizer APO
+`presets/arcade/` contains hardware-family profiles. The profile comments distinguish documented routing/hardware facts from experimental acoustic modelling.
 
-Preamp: -2.5 dB
-Filter 1: ON LS Fc 95 Hz Gain 11 dB Q 0.71
-Filter 2: ON PK Fc 315 Hz Gain -4 dB Q 1.41
-Filter 3: ON HS Fc 7000 Hz Gain 2 dB Q 0.71
+Important examples:
 
-> Note: The exact syntax may vary depending on how the filters are entered through Equalizer APO or Peace. The frequency, gain, and Q values above are the important parameters.
+- `neogeo-mvs.txt` — general MVS model.
+- `neogeo-mvs-mono.txt` — explicit mono/single-speaker variant.
+- `cps1.txt` — representative mono-oriented CPS1 routing.
+- `cps2.txt` — CPS2/QSound-oriented stereo model.
+- `midway-dcs.txt` — Midway DCS family; routing depends on DCS generation/title.
+- `konami-k053260.txt` — K053260-era systems; routing is title/board dependent.
+- `segamodel2-deluxe.txt` — specifically a deluxe/subwoofer-oriented Model 2 model.
+- `igs-pgm2-dodonpachi-daioujou-tamashii.txt` — PGM2/YMZ774-oriented profile.
 
----
+### CRT television
 
-## What This Emulates
+`presets/crt-tv/` is deliberately separated from arcade cabinets. These profiles represent the built-in speaker/amplifier chain of home CRT televisions by broad era rather than pretending that one EQ curve represents every television model.
 
-A real arcade machine is not an acoustically transparent playback system. The sound reaching the player is influenced by the speaker drivers, amplifier, cabinet geometry, cabinet materials, speaker mounting, and listening environment.
+Where documentation gives real hardware information, it is used as a hardware anchor. Nominal speaker impedance/power is **not** converted into a fabricated frequency response.
 
-This preset attempts to reproduce some of the **broad tonal effects** that can contribute to the familiar arcade sound.
+## Evidence levels
 
-### 1. Low-Frequency Weight
+The project uses these labels consistently:
 
-**95 Hz Low Shelf, +11 dB**
+- **MEASURED** — a direct acoustic/electrical measurement exists.
+- **DOCUMENTED** — supported by service documentation, manuals, schematics, or technical source material.
+- **EMPIRICAL** — based on observed/listening/field evidence but without a calibrated transfer measurement.
+- **INFERRED** — derived from documented architecture; not directly measured.
+- **EXPERIMENTAL** — a listening-oriented model where the exact response is not established by measurement.
 
-The low shelf provides substantially more low-frequency energy than a typical flat PC playback chain.
+A documented amplifier model does not automatically prove a frequency response. A speaker's impedance or power rating does not prove its acoustic transfer function.
 
-The intention is to approximate the physical weight and punch that can be perceived from speakers mounted in an arcade cabinet, particularly with explosions, impacts, engine sounds, and other low-frequency effects.
+## Optional nonlinear VST processing: ArcadeAmp
 
-Baffle geometry can affect low-frequency radiation through the well-known baffle-step phenomenon. However, the exact amount of compensation depends heavily on the physical dimensions and construction of the particular speaker enclosure.
+The `vst-plugin/` directory contains **ArcadeAmp**, a small open-source plugin (GPL-2.0-or-later) written for this project. It adds what a linear equalizer cannot: **saturation, asymmetry (even harmonics), power-supply sag, mains hum, hiss and the 15.7 kHz CRT whine**. It has a small window with six presets (Light, Medium, Heavy, TV early, TV late, Custom), so most users click one button.
 
-Therefore, the +11 dB value should be considered an **empirical tonal choice**, rather than a universal correction for arcade cabinets.
+![The ArcadeAmp window](vst-plugin/docs/window-preset-active.png)
 
-### 2. Lower-Midrange "Boxiness"
+* **Status:** v0.4. Works in Equalizer APO 1.4.2 on Windows as reported by the project owner (one listener, 2026-11-09). Unit-tested; the shipped DLL and its window were also exercised under Wine (`docs/testing/TEST-REPORT.md`).
+* **What it is not:** a measured model of any specific amplifier or TV. Only the whine frequency (NTSC / NTSC-J line rate) and the 50/60 Hz mains frequencies are documented numbers; every level is a usability choice, labelled EXPERIMENTAL.
+* **Setup with pictures:** [`docs/SETUP-GUIDE.md`](docs/SETUP-GUIDE.md). Reference: `docs/VST-SETUP.md`. Per-profile presets: `presets/experimental-vst/README.md`.
+* **Why it exists and how it got here:** `docs/research/VST.md` (research), `docs/history/ARCADEAMP-DEVELOPMENT-LOG.md` (four versions, each driven by a real field report, with measurements).
 
-**315 Hz Peaking Cut, -4 dB**
+The VST layer is optional. The core profiles never depend on it. Noise is treated cautiously: it can add audible texture but cannot be called an authentic MVS/CRT noise floor without a measurement.
 
-The 315 Hz cut reduces some of the lower-midrange energy that can make small or inexpensive speaker systems sound thick, congested, or "boxy."
+## Convolution / impulse responses
 
-This is intended to create more separation between effects, voices, and music while reducing the sense of a heavily colored enclosure.
+`impulse-responses/` documents the measurement path for future real cabinet captures.
 
-Actual cabinet resonances vary considerably with cabinet dimensions, speaker placement, construction, and internal volume, so this filter is an approximation rather than a model of a specific cavity resonance.
+A genuine cabinet/system IR is substantially more informative than inventing a dense EQ curve, but an IR should only be added when its capture chain, sample rate, channel layout, and provenance are known. The project does not ship a fabricated arcade-cabinet IR.
 
-### 3. High-Frequency Presence
+## Research, history and tests
 
-**7,000 Hz High Shelf, +2 dB**
+Nothing is thrown away; each layer documents the one before it.
 
-The high shelf adds a small amount of upper-frequency presence.
+| Where | What |
+|---|---|
+| `docs/research/` | Per-topic research: hardware, Equalizer APO, CRT TVs, Neo Geo MVS, VST, measurement and IR method, source register, evidence matrix |
+| `docs/history/PROJECT-HISTORY.md` | How the project evolved, phase by phase, and why |
+| `docs/history/ARCADEAMP-DEVELOPMENT-LOG.md` | ArcadeAmp v0.1 to v0.4: every field report, cause, fix and measurement |
+| `docs/testing/TEST-REPORT.md` | What was tested and how, results, field reports, what is not verified |
+| `vst-plugin/tests/` | The test programs and their recorded outputs |
+| `CHANGELOG.md` | Release notes |
 
-The goal is not to reproduce a particular arcade sound board or speaker driver, but to counterbalance the strong low-frequency emphasis and lower-midrange reduction while retaining some of the energetic character associated with arcade playback.
+## Original project
 
-The actual high-frequency response of an arcade machine varies substantially between hardware generations, speaker systems, and cabinet designs.
+The original files are kept **exactly as authored**, in the repository root:
 
----
+- `arcade-boost.txt` and `arcade-boost.peace`: the original preset (Preamp -2.5 dB; low shelf 95 Hz +11 dB; peak 315 Hz -4 dB; high shelf 7 kHz +2 dB).
+- `arcade-boost-apo.txt`: the same values written in the Equalizer APO syntax from its Configuration reference, used by `config.txt`. (The original `.txt` uses `Filter 1: LS f=95 Hz gain=11 dB Q=0.71`, which differs from that syntax; it was not tested here.)
+- `flat-mame.mp3` and `arcade-boosted.mp3`: the original comparison recordings. Listen to the difference: [flat](flat-mame.mp3) and [boosted](arcade-boosted.mp3).
+- The original README is preserved as [`docs/history/ORIGINAL-README-v1.md`](docs/history/ORIGINAL-README-v1.md).
 
-## What This Preset Is — and Isn't
+The original preset is the project's historical baseline and is not represented as a measured universal arcade response.
 
-### It Is
+## Project status
 
-- A simple tonal approximation of classic arcade playback.
-- Designed for modern PC audio systems running MAME.
-- Intended to work with Equalizer APO and, optionally, Peace.
-- A deliberately small EQ curve rather than a complicated multi-band simulation.
-- Something that can be adjusted to personal preference and different games.
+The strongest parts of the project are now the hardware/routing documentation and the separation between documented facts and experimental acoustic modelling.
 
-### It Isn't
+The major missing dataset remains the same: **calibrated measurements of original arcade cabinet electro-acoustic chains**. The project is structured so those measurements can replace experimental curves later without redesigning the repository.
 
-- A measurement of a specific arcade cabinet.
-- A physically accurate simulation of cabinet acoustics.
-- A replacement for an actual arcade speaker/amplifier/cabinet system.
-- Guaranteed to reproduce the response of every arcade machine.
-- A claim that every arcade cabinet had the same frequency response.
-
-The goal is simply to get **closer to the character of arcade playback than a completely flat PC audio chain**.
-
----
-
-## Managing Volume Differences Between Games
-
-Arcade hardware and games were produced across many different generations and used different audio hardware, mixing levels, and gain structures. Consequently, games can have noticeably different perceived volume levels.
-
-The **Preamp** control can be used to compensate for these differences.
-
-### Quieter Games
-
-For games that have a relatively low output level, you can raise the Preamp value.
-
-For example:
-Preamp: 0 dB
-or slightly higher if necessary.
-
-### Louder Games
-
-For games with particularly strong peaks, retaining a negative Preamp value can provide additional headroom:
-Preamp: -2.5 dB
-or lower if required.
-
-Because the low shelf adds substantial gain below 95 Hz, some reduction in Preamp is useful for maintaining headroom.
-
-> Note: The Preamp value is primarily a gain/headroom control. It does not change the tonal shape of the preset.
-
----
-
-## Installation Guide
-
-### 1. Install Equalizer APO
-
-Download Equalizer APO from the official SourceForge project:
-https://sourceforge.net/projects/equalizerapo/
-
-During installation:
-1. Select the Windows playback device you want MAME to use.
-2. Complete the installation.
-3. Reboot Windows if requested.
-
-### 2. Optional: Install Peace
-
-Peace provides a graphical interface for Equalizer APO and makes creating and adjusting presets easier.
-https://sourceforge.net/projects/peace-equalizer-apo-extension/
-
-### 3. Apply the Preset
-
-Enter the following parameters into Equalizer APO or Peace:
-
-Preamp: -2.5 dB
-
-Low Shelf:
-Frequency: 95 Hz
-Gain: +11 dB
-Q: 0.71
-
-Peaking:
-Frequency: 315 Hz
-Gain: -4 dB
-Q: 1.41
-
-High Shelf:
-Frequency: 7000 Hz
-Gain: +2 dB
-Q: 0.71
-
-Start with the default values before making personal adjustments.
-
----
-
-## Recommended Use
-
-The preset is intended primarily for:
-- MAME arcade emulation
-- Desktop speakers
-- Arcade cabinet PC builds
-- Full-range PC audio systems
-- Headphones when a more arcade-like tonal balance is desired
-
-Results will depend heavily on the playback hardware.
-
----
-
-## Tuning the Preset
-
-The three filters are intentionally broad, making them relatively easy to tune.
-
-### More Bass
-Increase the LS 95 Hz gain.
-
-### Less "Boxiness"
-Increase the depth of the PK 315 Hz cut (e.g., -5 dB instead of -4 dB).
-
-### More Treble Presence
-Increase the HS 7000 Hz gain (e.g., +3 dB instead of +2 dB).
-
----
-
-## Future Improvements
-
-Potential future work includes:
-- Measuring frequency responses from multiple arcade cabinets.
-- Comparing different cabinet sizes and speaker configurations.
-- Recording the same game through different arcade audio systems.
-- Using impulse-response measurements instead of EQ alone.
-
----
-
-## Scientific References & Literature
-
-- Olson, Harry F. — Direct Radiator Loudspeaker Enclosures. Journal of the Audio Engineering Society.
-- Dickason, Vance — The Loudspeaker Design Cookbook. Audio Amateur Press.
-- Beranek, Leo L. — Acoustics. McGraw-Hill.
-
----
-
-## Disclaimer
-
-This project is an **audio experimentation and emulation project**, not a scientifically validated model of arcade cabinet acoustics.
-
-> **Take clean digital MAME audio and give it some of the tonal character associated with playing through a classic arcade cabinet.**
+Beginner guide: `docs/SETUP-GUIDE.md`. Reference: `docs/USER-GUIDE.md`. Optional plugin: `docs/VST-SETUP.md` and `presets/experimental-vst/`. Research trail: `docs/research/SOURCES.md`.

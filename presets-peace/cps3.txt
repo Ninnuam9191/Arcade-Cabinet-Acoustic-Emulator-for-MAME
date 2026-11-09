@@ -1,0 +1,20 @@
+# Capcom CPS3
+# Sound: custom 16-channel stereo audio chip (not QSound). Cabinet/wiring:
+# JAMMA+ with dedicated stereo RCA outputs to an external amplifier. See
+# HARDWARE-NOTES.md. Deliberately the lightest-touch preset here.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -1.5 dB
+Filter 1: ON PK Fc 35 Hz Gain 1.00 dB Q 1.40
+Filter 2: ON PK Fc 60 Hz Gain 3.00 dB Q 1.40
+Filter 3: ON PK Fc 90 Hz Gain 6.00 dB Q 1.40
+Filter 4: ON PK Fc 140 Hz Gain 6.50 dB Q 1.40
+Filter 5: ON PK Fc 220 Hz Gain 3.00 dB Q 1.40
+Filter 6: ON PK Fc 320 Hz Gain -2.00 dB Q 1.40
+Filter 7: ON PK Fc 550 Hz Gain -0.50 dB Q 1.40
+Filter 8: ON PK Fc 3000 Hz Gain 0.50 dB Q 1.40
+Filter 9: ON PK Fc 8500 Hz Gain 1.50 dB Q 1.40
+Filter 10: ON PK Fc 12000 Hz Gain 1.00 dB Q 1.40
+Filter 11: ON PK Fc 500 Hz Gain 1.0 dB Q 3.0

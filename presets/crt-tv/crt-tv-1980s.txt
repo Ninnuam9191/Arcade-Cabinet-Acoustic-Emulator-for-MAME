@@ -1,0 +1,30 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# CRT TV, Japan, 1979-1980s (Famicom era)
+# Reference model: Sony Trinitron KV-1901A (1980, Japan, 19"): documented
+# via crtdatabase.com. Japan's EIAJ MTS stereo standard was technically
+# live from 1978/79 (see crt-tv-1970s.txt), which is notably EARLIER than
+# the US's 1984 BTSC - but early implementations (e.g. Sony's KV-1375D,
+# 1978) delivered the stereo difference signal via a separate outboard
+# "multiplex sound adapter" (Sony MLV-2000) rather than a fully
+# integrated stereo decoder and second speaker. This preset still models
+# a single-speaker mono set, since that combination (a TV with the
+# multiplex jack but no adapter attached, or an older/cheaper single-
+# speaker set entirely) was plausibly still the common Famicom-era setup
+# - but it's worth knowing Japan's stereo broadcast capability existed
+# earlier than the US timeline might suggest, for anyone chasing a more
+# specific period-correct setup.
+# HONEST LIMIT: same as crt-tv-1970s.txt - see docs/research/VST.md.
+
+Preamp: -0.5 dB
+
+# Mono fold-down: TV audio in this era was effectively mono
+Copy: L=0.5*L+0.5*R R=0.5*L+0.5*R
+
+# Narrow TV audio-strip passband, expressed as a single band-pass filter
+Filter: ON BP Fc 1300 Hz Q 0.45
+
+# Overall TV-speaker tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 100 -8; 200 -4; 400 -1; 700 1.5; 1000 2.5; 1500 3; 2000 2.5; 3000 1.5; 4000 0; 5000 -3; 7000 -8; 10000 -13
+
+# TV cabinet panel resonance with an actual decay time (T60): Transitional wood-to-molded-plastic cabinet, Sony KV-1901A-era construction.
+Filter: ON Modal Fc 350 Hz Gain 2.0 dB Q 3.0 T60 target 17 ms
