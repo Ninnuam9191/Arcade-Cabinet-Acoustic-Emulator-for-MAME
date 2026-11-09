@@ -1,0 +1,26 @@
+# CAVE CV1000 / "Cave SH-3" hardware (Mushihimesama, Espgaluda II, Ibara,
+# Pink Sweets, Mushihimesama Futari, Muchi Muchi Pork!, Deathsmiles,
+# DoDonPachi DaiFukkatsu - 2004-2012). Covers the
+# original Deathsmiles (CV1000B) - NOT Deathsmiles II, which ran on
+# different "CAVE PC" hardware.
+# Sound: Yamaha YMZ770C-F, a compressed-audio codec chip (a different,
+# later generation than the 1st-gen boards' YMZ280B/OKI PCM setup).
+# Confirmed via the Arcade Otaku wiki's CV1000 hardware page. Standard
+# JAMMA wiring, no deluxe cabinet program. See HARDWARE-NOTES.md.
+# NOTE: DoDonPachi DaiOuJou Tamashii is PGM2, not CV1000. Do not use this
+# preset for that title. Ketsui and the original Espgaluda are also not CV1000.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -0.5 dB
+Filter 1: ON PK Fc 30 Hz Gain 1.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain 3.00 dB Q 1.40
+Filter 3: ON PK Fc 80 Hz Gain 5.50 dB Q 1.40
+Filter 4: ON PK Fc 120 Hz Gain 5.50 dB Q 1.40
+Filter 5: ON PK Fc 200 Hz Gain 2.50 dB Q 1.40
+Filter 6: ON PK Fc 400 Hz Gain -2.00 dB Q 1.40
+Filter 7: ON PK Fc 700 Hz Gain -0.50 dB Q 1.40
+Filter 8: ON PK Fc 9000 Hz Gain -0.50 dB Q 1.40
+Filter 9: ON PK Fc 14000 Hz Gain -1.00 dB Q 1.40
+Filter 10: ON PK Fc 420 Hz Gain 1.8 dB Q 4.0

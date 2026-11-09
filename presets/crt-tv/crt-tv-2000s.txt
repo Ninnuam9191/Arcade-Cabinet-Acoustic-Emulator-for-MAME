@@ -1,0 +1,24 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# CRT TV, 2000s (PS2/GameCube/Xbox era, larger console-style CRTs)
+# Reference data point: a late-generation deluxe Sony Trinitron (KV-29X5K,
+# 29", documented via an elektroda.com teardown/service-manual writeup)
+# specifies a built-in 2x20W stereo speaker system - a real, meaningfully
+# more powerful and wider-bandwidth-capable amplifier/speaker pair than
+# the small single-digit-watt sets of earlier decades. Flag: this specific
+# model's documentation shows SCART sockets, a European-market AV
+# connector standard not used in Japan, so it's used here only as a
+# general "how capable had large deluxe CRT TV audio become by this
+# point" data point, not asserted as a Japanese-domestic model.
+# HONEST LIMIT: same as crt-tv-1970s.txt - see docs/research/VST.md.
+
+Preamp: -0.5 dB
+
+# Small-speaker bandwidth limiting
+Filter: ON HP Fc 45 Hz Q 0.71
+Filter: ON LP Fc 15000 Hz Q 0.71
+
+# Overall TV-speaker tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 50 -4; 90 -1.5; 150 0; 300 1; 600 1.5; 1000 1.5; 2000 1; 3000 0.5; 4500 0; 7000 -1.5; 10000 -4; 14000 -8
+
+# TV cabinet panel resonance with an actual decay time (T60): Larger deluxe CRT cabinet, well-damped molded plastic, 2x20W-class amp.
+Filter: ON Modal Fc 280 Hz Gain 1.0 dB Q 3.0 T60 target 10 ms

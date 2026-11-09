@@ -1,0 +1,11 @@
+flags 0x11 hasEditor=1
+GetRect before open: pointer set
+[dpf] createNextWindow 560 540 1.000000
+editOpen=1 rect 560 x 540
+child window 000000000003006a
+after clicking Heavy: preset value 0.60 (3/5 = 0.60), automate calls 1
+after dragging Hum: preset 0.00, drive 0.25 hum 0.65 (Heavy copied: drive .25, hum was .25 then dragged)
+after clicking 50 Hz: mains 1.00
+editClose ok
+done
+X connection to :82 broken (explicit kill or server shutdown).

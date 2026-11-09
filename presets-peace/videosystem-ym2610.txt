@@ -1,0 +1,20 @@
+# Video System hardware (Sonic Wings / Aero Fighters and related titles)
+# Sound: Yamaha YM2610 @ 8 MHz + Z80 sound CPU. Same chip as Neo Geo MVS,
+# but standard JAMMA uprights, not MVS candy cabinets. See
+# HARDWARE-NOTES.md.
+
+# PEACE-IMPORTABLE VERSION - see presets-peace/README.md and
+# EQAPO-FEATURES.md for what's approximated/left out and why.
+
+Preamp: -3.5 dB
+Filter 1: ON PK Fc 30 Hz Gain 2.00 dB Q 1.40
+Filter 2: ON PK Fc 50 Hz Gain 4.50 dB Q 1.40
+Filter 3: ON PK Fc 80 Hz Gain 7.50 dB Q 1.40
+Filter 4: ON PK Fc 120 Hz Gain 8.50 dB Q 1.40
+Filter 5: ON PK Fc 200 Hz Gain 5.50 dB Q 1.40
+Filter 6: ON PK Fc 320 Hz Gain -3.00 dB Q 1.40
+Filter 7: ON PK Fc 600 Hz Gain -1.00 dB Q 1.40
+Filter 8: ON PK Fc 3000 Hz Gain 0.50 dB Q 1.40
+Filter 9: ON PK Fc 6500 Hz Gain 1.50 dB Q 1.40
+Filter 10: ON PK Fc 10000 Hz Gain 1.00 dB Q 1.40
+Filter 11: ON PK Fc 380 Hz Gain 2.2 dB Q 4.0

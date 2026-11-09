@@ -1,0 +1,24 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# IGS PGM2 - DoDonPachi DaiOuJou Tamashii
+# Hardware: IGS PGM2 with Yamaha YMZ774-S sound hardware.
+# MAME identifies this title explicitly as PGM2 and routes YMZ774 outputs to
+# a two-channel speaker. This is NOT the same hardware as Cave CV1000.
+#
+# Evidence status:
+#   [DOCUMENTED] PGM2 platform and YMZ774-S sound hardware.
+#   [DOCUMENTED] MAME stereo routing for YMZ774.
+#   [EXPERIMENTAL] cabinet/speaker EQ below; no measured PGM2 cabinet response.
+#   [MEASURED] no project measurement currently included.
+# See SOURCE-REGISTER-v6.3.md and PRESET-EVIDENCE-MATRIX-v6.3.md.
+
+Preamp: -1.0 dB
+
+# Preserve the documented stereo source routing. Do not mono-sum by default.
+
+# Experimental generic JAMMA acoustic envelope. This is deliberately mild:
+# the source hardware is documented, but no title-specific cabinet response
+# has been located.
+GraphicEQ: 30 0; 50 1; 80 2; 120 2; 200 1; 350 -1; 600 -0.5; 1200 0; 3000 0; 7000 0; 12000 -0.5; 16000 -1
+
+# Experimental short cabinet resonance. Not a measured PGM2 value.
+Filter: ON Modal Fc 450 Hz Gain 1.0 dB Q 3.0 T60 target 20 ms

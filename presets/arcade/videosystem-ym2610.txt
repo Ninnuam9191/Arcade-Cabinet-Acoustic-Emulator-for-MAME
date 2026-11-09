@@ -1,0 +1,15 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Video System hardware (Sonic Wings / Aero Fighters and related titles)
+# Sound: Yamaha YM2610 @ 8 MHz + Z80 sound CPU. Same chip as Neo Geo MVS,
+# but standard JAMMA uprights, not MVS candy cabinets. See
+# HARDWARE-NOTES.md.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -3.5 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 2; 50 4.5; 80 7.5; 120 8.5; 200 5.5; 320 -3; 600 -1; 1200 0; 3000 0.5; 6500 1.5; 10000 1; 14000 0
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Standard damped wood JAMMA shell.
+Filter: ON Modal Fc 380 Hz Gain 2.2 dB Q 4.0 T60 target 25 ms

@@ -1,0 +1,31 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Neo Geo MVS - experimental cabinet model
+# Sound: Yamaha YM2610 (FM + ADPCM) with external DAC/mixing circuitry.
+# IMPORTANT: MVS boards/cabinets are NOT acoustically universal. Stereo and
+# mono implementations exist; use the mono variant only when the cabinet is
+# known to be wired that way. See HARDWARE-NOTES.md and MVS-NOISE-NOTES.md.
+#
+# Evidence status:
+#   [DOCUMENTED] YM2610/YM3016 audio architecture and MVS amplifier variants.
+#   [DOCUMENTED] SNK MVS-4-25 parts list specifies a 4-inch, 8-ohm, 5-W speaker.
+#   [DOCUMENTED/VARIANT] stereo/mono configurations depend on board/cabinet.
+#   [EXPERIMENTAL] all speaker/cabinet EQ and modal values below; the MVS-4-25 speaker rating does not provide an FR curve.
+#   [MEASURED] no genuine MVS cabinet IR currently included.
+
+Preamp: -1.0 dB
+
+# Default: preserve stereo. Do not fold down unless the target cabinet is
+# verified mono. See neogeo-mvs-mono.txt for the mono configuration.
+
+# Experimental small-driver bandwidth envelope. These limits are a proxy for
+# a compact arcade full-range driver, NOT a measured MVS speaker response.
+Filter: ON HP Fc 85 Hz Q 0.71
+Filter: ON LP Fc 7000 Hz Q 0.71
+
+# Experimental acoustic coloration. This is retained from the WIP because it
+# is useful for listening tests, but is NOT presented as a measured MVS curve.
+GraphicEQ: 30 -6; 50 -4; 85 0; 120 4; 170 6; 300 3; 450 0; 650 -5; 1200 -2; 3000 0.5; 5000 1; 7000 0; 10000 -4
+
+# Experimental cabinet-panel resonance. 700 Hz / Q6 / 60 ms is a model
+# parameter, not a measurement of a Super Neo 29 or other MVS cabinet.
+Filter: ON Modal Fc 700 Hz Gain 3.0 dB Q 6.0 T60 target 60 ms

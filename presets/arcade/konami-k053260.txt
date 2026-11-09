@@ -1,0 +1,16 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Konami K053260-era hardware (Sunset Riders, TMNT: Turtles in Time,
+# Asterix, Vendetta, The Simpsons)
+# Sound: Yamaha YM2151 (FM) + Konami K053260 (4-voice PCM/ADPCM).
+# Output routing is board/game dependent: some documented boards are stereo,
+# while others are mono. Standard JAMMA family; see HARDWARE-NOTES.md.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -3.0 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 2; 50 4; 80 7; 120 8; 200 5.5; 380 -2; 650 -0.5; 1200 0.5; 3000 1; 7500 1.5; 11000 1; 15000 0
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Standard damped wood JAMMA shell.
+Filter: ON Modal Fc 410 Hz Gain 2.0 dB Q 4.0 T60 target 24 ms

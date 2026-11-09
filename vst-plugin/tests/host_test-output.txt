@@ -1,0 +1,32 @@
+params: 9, in 2 out 2
+  [0] Preset     value 0.000 display 'Custom'
+  [1] Drive      value 0.100 display '10.000000'
+  [2] Warmth     value 0.000 display '0.000000'
+  [3] Sag        value 0.000 display '0.000000'
+  [4] Hum        value 0.000 display '0.000000'
+  [5] Hiss       value 0.000 display '0.000000'
+  [6] Hiss Tone  value 0.500 display '50.000000'
+  [7] Whine      value 0.000 display '0.000000'
+  [8] Mains 50Hz value 0.000 display '60 Hz'
+  props[0] flags=0x0 intLimits=no
+  props[1] flags=0x0 intLimits=no
+  props[2] flags=0x0 intLimits=no
+  props[3] flags=0x0 intLimits=no
+  props[4] flags=0x0 intLimits=no
+  props[5] flags=0x0 intLimits=no
+  props[6] flags=0x0 intLimits=no
+  props[7] flags=0x0 intLimits=no
+  props[8] flags=0x1 intLimits=no
+  preset 0.00 -> 'Custom'
+  preset 0.20 -> 'Light'
+  preset 0.40 -> 'Medium'
+  preset 0.60 -> 'Heavy'
+  preset 0.80 -> 'TV early'
+  preset 1.00 -> 'TV late'
+  defaults, 0.3 tone                 L -13.7 dBFS  R -13.7 dBFS  (input -13.5)
+  Custom: Drive 0                    L -13.5 dBFS  R -13.5 dBFS  (input -13.5)
+  Preset Medium (2/5), tone          L -14.2 dBFS  R -14.2 dBFS  (input -13.5)
+  Preset Heavy (3/5), tone           L -15.3 dBFS  R -15.3 dBFS  (input -13.5)
+  Preset Medium, silence             L -47.3 dBFS  R -47.3 dBFS  (input -200.0)
+  Preset TV early, silence           L -42.9 dBFS  R -42.9 dBFS  (input -200.0)
+  Custom Hum 25 only, silence        L -46.5 dBFS  R -46.5 dBFS  (input -200.0)

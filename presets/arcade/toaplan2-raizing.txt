@@ -1,0 +1,15 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Battle Garegga and other Raizing/Eighting boards on Toaplan "Version 2"-
+# derived hardware
+# Sound: Yamaha YM2151 (FM) + OKI MSM6295 (ADPCM) + NMK112 (bank switcher).
+# Standard JAMMA. See HARDWARE-NOTES.md.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -3.0 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 2; 50 4; 80 7; 120 8; 200 5; 350 -3; 600 -1; 1200 0; 3000 0.5; 6500 1.5; 10000 1; 14000 0
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Standard damped wood JAMMA shell, same family as CPS1.
+Filter: ON Modal Fc 400 Hz Gain 2.0 dB Q 4.0 T60 target 25 ms

@@ -1,0 +1,26 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Neo Geo MVS - experimental MONO cabinet model
+# Use only when the target MVS cabinet is known to use a single/mono speaker.
+# The MVS hardware family contains both mono and stereo implementations.
+#
+# Evidence status:
+#   [DOCUMENTED] YM2610/YM3016 audio architecture and MVS amplifier variants.
+#   [DOCUMENTED] SNK MVS-4-25 parts list specifies a 4-inch, 8-ohm, 5-W speaker.
+#   [DOCUMENTED/VARIANT] mono/stereo wiring depends on board/cabinet.
+#   [EXPERIMENTAL] speaker/cabinet EQ and modal values.
+#   [MEASURED] no genuine MVS cabinet IR currently included.
+
+Preamp: -1.0 dB
+
+# Mono fold-down. Equal-weight sum avoids choosing one source channel.
+Copy: L=0.5*L+0.5*R R=0.5*L+0.5*R
+
+# Experimental small-driver bandwidth envelope; not a measured MVS response.
+Filter: ON HP Fc 85 Hz Q 0.71
+Filter: ON LP Fc 7000 Hz Q 0.71
+
+# Experimental cabinet/speaker coloration retained from the WIP.
+GraphicEQ: 30 -6; 50 -4; 85 0; 120 4; 170 6; 300 3; 450 0; 650 -5; 1200 -2; 3000 0.5; 5000 1; 7000 0; 10000 -4
+
+# Experimental panel resonance; not measured.
+Filter: ON Modal Fc 700 Hz Gain 3.0 dB Q 6.0 T60 target 60 ms

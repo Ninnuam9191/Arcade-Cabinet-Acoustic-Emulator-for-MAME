@@ -1,0 +1,15 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Capcom CPS3
+# Sound: custom 16-channel stereo audio chip (not QSound). Cabinet/wiring:
+# JAMMA+ with dedicated stereo RCA outputs to an external amplifier. See
+# HARDWARE-NOTES.md. Deliberately the lightest-touch preset here.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -1.5 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 35 1; 60 3; 90 6; 140 6.5; 220 3; 320 -2; 550 -0.5; 1200 0; 3000 0.5; 8500 1.5; 12000 1; 16000 0
+
+# Cabinet panel resonance with an experimental decay-time model (T60): External amp/speakers assumed reasonably well-built - minimal panel-resonance character.
+Filter: ON Modal Fc 500 Hz Gain 1.0 dB Q 3.0 T60 target 15 ms

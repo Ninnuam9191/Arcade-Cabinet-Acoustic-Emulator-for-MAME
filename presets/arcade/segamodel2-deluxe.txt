@@ -1,0 +1,15 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Sega Model 2 - experimental deluxe/sit-down cabinet model
+# Model 2 sound hardware is not one universal configuration: MAME documents
+# SCSP-based and YM3438/MultiPCM configurations. This preset targets the
+# SCSP-style deluxe/sit-down acoustic presentation only. See HARDWARE-NOTES.md.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -5.0 dB
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 25 4; 40 7; 65 10; 100 9; 160 5; 300 -2; 600 0; 1200 0.5; 3000 1; 8000 2.5; 12000 2; 16000 0.5
+
+# Cabinet panel resonance with an experimental decay-time model (T60): Real enclosure with proper bass management - better built than a generic JAMMA shell.
+Filter: ON Modal Fc 250 Hz Gain 1.5 dB Q 3.0 T60 target 20 ms

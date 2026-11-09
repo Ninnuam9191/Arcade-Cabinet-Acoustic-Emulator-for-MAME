@@ -1,0 +1,8 @@
+# Arcade Cabinet Acoustic Emulator — Original Arcade Boost preset
+# Same values as the original arcade-boost.txt (kept untouched in this repository),
+# written in the Equalizer APO syntax documented in its Configuration reference
+# (Filter: ON <type> Fc <Hz> Gain <dB> Q <q>). Not a measured response.
+Preamp: -2.5 dB
+Filter: ON LS Fc 95 Hz Gain 11 dB Q 0.71
+Filter: ON PK Fc 315 Hz Gain -4 dB Q 1.41
+Filter: ON HS Fc 7000 Hz Gain 2 dB Q 0.71

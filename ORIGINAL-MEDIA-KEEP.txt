@@ -1,0 +1,8 @@
+Original repository media:
+
+- flat-mame.mp3
+- arcade-boosted.mp3
+
+These files belong to the original GitHub repository and should be preserved when this package is merged into the upstream checkout.
+
+They are intentionally not duplicated in this research package.

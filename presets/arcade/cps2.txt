@@ -1,0 +1,20 @@
+# v2 profile metadata: hardware/routing evidence is separated from acoustic modeling; see docs/PROFILE-CATALOG.md.
+# Capcom CPS2 / CPS1.5 ("Dash")
+# Chip: OKI MSM6295 (ADPCM) + Capcom/QSound DL-1425
+# Cabinet basis: standard JAMMA upright, same shell as CPS1 in most installs.
+# QSound was purpose-built to widen the stereo image. See HARDWARE-NOTES.md
+# and EQAPO-FEATURES.md for the Haas/precedence-effect widening method.
+
+# Status: hardware identity/routing is researched; acoustic EQ and Modal/T60 values are experimental unless explicitly documented otherwise.
+
+Preamp: -4.5 dB
+
+# QSound already performs the source-level spatial processing.
+# Do NOT add a generic Haas delay here: it would be a second, unrelated
+# spatialization layer and is not a documented CPS2 cabinet characteristic.
+
+# Overall tonal curve, drawn as a multi-point graphic EQ
+GraphicEQ: 30 2; 50 4.5; 80 7.5; 120 9; 200 5.5; 350 -3; 600 -1; 1200 0; 3000 1; 7500 2; 11000 1.5; 15000 0
+
+# Experimental cabinet-panel resonance. T60 is modeled, not a measured CPS2 cabinet value.
+Filter: ON Modal Fc 400 Hz Gain 2.0 dB Q 4.0 T60 target 25 ms
